@@ -1,16 +1,17 @@
-<div class="main">
+<div class="container">
   <h1>Forbidden</h1>
-  <h2>
+  <h3>
     {{#if error}}
       {{error}}
     {{else}}
       You don't have permission to see the page you're trying to reach.
     {{/if}}
-  </h2>
+  </h3>
   {{#if data}}
     Message: <code>{{data}}</code>
   {{/if}}
+  
   <p class="help">
-    <a href="http://en.wikipedia.org/wiki/HTTP_403">Why</a> might this be happening?
+    Try <a href="/login">logging in</a>?
   </p>
 </div>

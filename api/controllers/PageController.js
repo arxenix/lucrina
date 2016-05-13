@@ -12,6 +12,9 @@ module.exports = {
   myTeam: function(req, res) {
   	
   },
+  chat: function(req, res) {
+  	res.render('chat', {user: req.user});
+  },
   team: function(req,res) {
 	    var teamId = req.param('teamId');
 	    if(!teamId) {

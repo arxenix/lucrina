@@ -37,6 +37,7 @@ module.exports.routes = {
   },*/
   '/': 'PageController.home',
   'GET /profile': 'PageController.profile',
+  'GET /chat': 'PageController.chat',
   'GET /team': 'PageController.team',
   'GET /team/:teamId': 'PageController.team', 
   'GET /updates': 'PageController.updates',

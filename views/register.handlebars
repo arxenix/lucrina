@@ -1,24 +1,115 @@
-<!-- LOGIN FORM -->
-<form action="/register" method="post">
-    <div class="form-group">
-        <label>Username</label>
-        <input type="text" class="form-control" name="username">
-    </div>
-    <div class="form-group">
-        <label>First Name</label>
-        <input type="text" class="form-control" name="firstName">
-    </div>
-    <div class="form-group">
-        <label>Last Name</label>
-        <input type="text" class="form-control" name="lastName">
-    </div>
-    <div class="form-group">
-        <label>Email</label>
-        <input type="email" class="form-control" name="email">
-    </div>
-    <div class="form-group">
-        <label>Password</label>
-        <input type="password" class="form-control" name="password">
-    </div>
-    <button type="submit" class="btn btn-warning btn-lg">Register</button>
-</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/css/formValidation.min.css">
+<div class="container">
+    <!-- REGISTER FORM -->
+    <form id="register-form" action="/register" method="post">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" name="username">
+        </div>
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="firstName">
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="lastName">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Register</button>
+    </form>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/formValidation.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/framework/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#register-form').formValidation({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            username: {
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required'
+                    },
+                    stringLength: {
+                        min: 5,
+                        max: 32,
+                        message: 'The username must be more than 5 and less than 30 characters long'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_]+$/,
+                        message: 'The username can only consist of alphabetical, number and underscore'
+                    }
+                }
+            },
+            firstName: {
+                validators: {
+                    notEmpty: {
+                        message: 'Your first name is required'
+                    },
+                    stringLength: {
+                        min: 1,
+                        max: 32,
+                        message: 'Name must be less than 32 characters long'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_]+$/,
+                        message: 'The name can only consist of alphabetical characters'
+                    }
+                }
+            },
+            lastName: {
+                validators: {
+                    notEmpty: {
+                        message: 'Your last name is required'
+                    },
+                    stringLength: {
+                        min: 1,
+                        max: 32,
+                        message: 'Name must be less than 32 characters long'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_]+$/,
+                        message: 'The name can only consist of alphabetical characters'
+                    }
+                }
+            },
+            price: {
+                validators: {
+                    notEmpty: {
+                        message: 'The price is required'
+                    },
+                    numeric: {
+                        message: 'The price must be a number'
+                    }
+                }
+            },
+            'size[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'The size is required'
+                    }
+                }
+            },
+            availability: {
+                validators: {
+                    notEmpty: {
+                        message: 'The availability option is required'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>

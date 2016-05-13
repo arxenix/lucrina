@@ -1,13 +1,34 @@
-<!-- LOGIN FORM -->
-<form action="/auth/local" method="post">
-    <div class="form-group">
-        <label>Username</label>
-        <input type="text" class="form-control" name="identifier">
-    </div>
-    <div class="form-group">
-        <label>Password</label>
-        <input type="password" class="form-control" name="password">
-    </div>
-
-    <button type="submit" class="btn btn-warning btn-lg">Login</button>
-</form>
+<div class="container">
+    <!-- LOGIN FORM -->
+    <div id="alert-placeholder"></div>
+    <form id="login-form" action="/auth/local" method="post">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" name="identifier">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+    
+        <button type="submit" class="btn btn-primary btn-lg">Login</button>
+    </form>
+</div>
+<script type="text/javascript">
+    $('#login-form').submit(function(e) {
+        e.preventDefault();  //prevent form from submitting
+        var data = $("#login-form").serialize();
+        
+        $.ajax({
+          type: "POST",
+          url: "/auth/local",
+          data: data,
+          success: function(data) {
+            window.location.replace("/profile");
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+              $("#alert-placeholder").html('<div class="alert alert-danger alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Invalid username or password!</strong></div>');
+          }
+        });
+    });
+</script>
