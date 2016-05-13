@@ -39,9 +39,13 @@ module.exports.policies = {
     'CriteriaPolicy'
   ],
   
+  PageController: {
+    '*': [ 'passport' ],
+    'profile': ['basicAuth', 'passport', 'sessionAuth']
+  },
+  
   UserController: {
-    'register': true,
-    'login': true
+    'me': [ 'basicAuth', 'passport', 'sessionAuth' ]
   },
   
   UpdateController: {

@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <h2>Your Profile</h2>
+        <h3>Username: <small>{{user.username}}</small></h3>
+        <h3>First Name: <small>{{user.firstName}}</small></h3>
+        <h3>Last Name: <small>{{user.lastName}}</small></h3>
+        <h3>Email: <small>{{user.email}}</small></h3>
+    </div>
+    <div class="row">
+        {{#if team}}
+            <h2>Your Team</h2>
+            <h3>Team name: <small>{{team.name}}</small></h3>
+        {{else}}
+            You have no team!
+        {{/if}}
+    </div>
+</div>

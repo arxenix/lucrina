@@ -32,17 +32,21 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
+  /*'/': {
     view: 'homepage'
-  },
-  'GET /updates': 'UpdateController.hi',
+  },*/
+  '/': 'PageController.home',
+  'GET /profile': 'PageController.profile',
+  'GET /team': 'PageController.team',
+  'GET /team/:teamId': 'PageController.team', 
+  'GET /updates': 'PageController.updates',
   'GET /register': { view: 'register' },
-  'POST /register': 'UserController.register',
+  'POST /register': 'AuthController.register',
   'GET /login': { view: 'login' },
-  'POST /login': 'UserController.login'
+  'POST /login': 'AuthController.login'
 
   /***************************************************************************
-  *                                                                          *
+  *                                                                      *
   * Custom routes here...                                                    *
   *                                                                          *
   * If a request to a URL doesn't match any of the custom routes above, it   *

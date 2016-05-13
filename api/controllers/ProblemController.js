@@ -6,6 +6,14 @@
  */
 
 module.exports = {
-	
+    //TODO rate-limit teams submissions
+	submitFlag: function(req, res) {
+	    
+	}
 };
 
+
+function gradeFlag(problem, flag) {
+    var grader = require('../flag_graders/'+problem.grader);
+    return grader.grade(flag);
+}
